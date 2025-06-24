@@ -24,23 +24,12 @@ export default memo(function TodoItem({ todo, onDelete }: Props) {
     setRemoving(true);
   };
 
-  const handleItemClick = () => {
-    if (!removing) setRemoving(true);
-  };
-
   return (
     <li
       className={`bg-gradient-to-r from-white via-violet-50 to-purple-50 dark:from-zinc-800 dark:to-zinc-900 px-6 py-4 rounded-2xl flex justify-between items-center cursor-pointer border border-violet-200/50 hover:border-violet-300 hover:shadow-lg hover:scale-[1.02] transition-all duration-300 ease-out ${removing ? 'opacity-50 scale-95 pointer-events-none' : ''}`}
-      onClick={handleItemClick}
-      title="Click to delete"
+      title="Your Todo"
       role="button"
       tabIndex={0}
-      onKeyDown={(e) => {
-        if (e.key === 'Enter' || e.key === ' ') {
-          e.preventDefault();
-          handleItemClick();
-        }
-      }}
     >
       <span className="text-lg font-medium text-gray-800 dark:text-white select-none">
         {todo.title}
