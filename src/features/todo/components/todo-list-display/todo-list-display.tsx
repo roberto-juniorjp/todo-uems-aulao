@@ -1,11 +1,6 @@
 import React from 'react';
-import type { Todo } from '../../../../core/types/todo';
 import TodoItem from '../todo-item/todo-item';
-
-interface TodoListDisplayProps {
-  todos: Todo[];
-  onDelete: (id: string) => void;
-}
+import type { TodoListDisplayProps } from '../../interfaces/todo-list-display-props';
 
 export const TodoListDisplay: React.FC<TodoListDisplayProps> = ({ todos, onDelete }) => {
   return (

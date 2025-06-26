@@ -1,11 +1,6 @@
 import { useState, useEffect } from "react";
-import type { Todo } from "../../../../core/types/todo";
 import { Trash2 } from "lucide-react";
-
-interface TodoItemProps {
-  todo: Todo;
-  onDelete: () => void;
-}
+import type { TodoItemProps } from "../../interfaces/todo-item-props";
 
 function TodoItem({ todo, onDelete }: TodoItemProps) {
   const [removing, setRemoving] = useState(false);

@@ -1,17 +1,8 @@
 import { useState, useEffect } from "react";
 import { addTodo, deleteTodo, getTodos } from "../../../infrastructure/firebase/todo-service";
 import type { Todo } from "../../../core/types/todo";
-
-interface UseTodoLogicReturn {
-  todos: Todo[];
-  newTitle: string;
-  setNewTitle: (title: string) => void;
-  isLoading: boolean;
-  isAdding: boolean;
-  handleAdd: () => Promise<void>;
-  handleDelete: (id: string) => Promise<void>;
-  handleKeyDown: (e: React.KeyboardEvent) => void;
-}
+import type { UseTodoLogicReturn } from "../interfaces/use-todo-logic-return";
+import { handleKeyDown } from "../../../core/utils/keyboard-tools";
 
 export function useTodoLogic(): UseTodoLogicReturn {
   const [todos, setTodos] = useState<Todo[]>([]);
@@ -43,11 +34,9 @@ export function useTodoLogic(): UseTodoLogicReturn {
     setTodos(todos.filter(todo => todo.id !== id));
   }
 
-  function handleKeyDown(e: React.KeyboardEvent): void {
-    if (e.key === "Enter") {
-      handleAdd();
-    }
-  }
+  const handleKeyboardEvent = (e: React.KeyboardEvent) => {
+    handleKeyDown(e, handleAdd);
+  };
 
   useEffect(() => {
     loadTodos();
@@ -61,6 +50,6 @@ export function useTodoLogic(): UseTodoLogicReturn {
     isAdding,
     handleAdd,
     handleDelete,
-    handleKeyDown,
+    handleKeyDown: handleKeyboardEvent,
   };
 }

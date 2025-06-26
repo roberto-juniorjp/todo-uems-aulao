@@ -1,9 +1,5 @@
 import React from 'react';
-
-interface TodoStatusMessageProps {
-  isLoading: boolean;
-  todosCount: number;
-}
+import type { TodoStatusMessageProps } from '../../interfaces/todo-status-message-props';
 
 export const TodoStatusMessage: React.FC<TodoStatusMessageProps> = ({ isLoading, todosCount }) => {
   if (isLoading) {

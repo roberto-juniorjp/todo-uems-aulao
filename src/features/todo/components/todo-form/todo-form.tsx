@@ -1,13 +1,6 @@
 import React from 'react';
 import { Plus } from "lucide-react";
-
-interface TodoFormProps {
-  newTitle: string;
-  setNewTitle: (title: string) => void;
-  handleAdd: () => void;
-  handleKeyDown: (e: React.KeyboardEvent) => void;
-  isAdding: boolean;
-}
+import type { TodoFormProps } from '../../interfaces/todo-form-props';
 
 export const TodoForm: React.FC<TodoFormProps> = ({
   newTitle,
