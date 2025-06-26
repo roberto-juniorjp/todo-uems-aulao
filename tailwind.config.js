@@ -18,5 +18,5 @@ export default {
     },
   },
   plugins: [],
-  darkMode: 'class', // ou 'media' se preferir
+  darkMode: 'class',
 }

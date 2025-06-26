@@ -1,13 +1,13 @@
-import { useState, useEffect, memo } from "react";
-import type { Todo } from "../../../core/types/todo";
+import { useState, useEffect } from "react";
+import type { Todo } from "../../../../core/types/todo";
 import { Trash2 } from "lucide-react";
 
-interface Props {
+interface TodoItemProps {
   todo: Todo;
   onDelete: () => void;
 }
 
-export default memo(function TodoItem({ todo, onDelete }: Props) {
+function TodoItem({ todo, onDelete }: TodoItemProps) {
   const [removing, setRemoving] = useState(false);
 
   useEffect(() => {
@@ -19,10 +19,10 @@ export default memo(function TodoItem({ todo, onDelete }: Props) {
 
   if (!todo) return null;
 
-  const handleRemoveClick = (e: React.MouseEvent) => {
+  function handleRemoveClick(e: React.MouseEvent) {
     e.stopPropagation();
     setRemoving(true);
-  };
+  }
 
   return (
     <li
@@ -44,4 +44,6 @@ export default memo(function TodoItem({ todo, onDelete }: Props) {
       </button>
     </li>
   );
-});
+}
+
+export default TodoItem;

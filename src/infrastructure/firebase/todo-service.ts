@@ -8,8 +8,9 @@ import {
 } from "firebase/firestore";
 import { db } from "./firebase-config";
 import type { Todo } from "../../core/types/todo";
+import { TODOS_COLLECTION } from "../constants/tables";
 
-const TODOS_COLLECTION = "todos";
+
 
 export const getTodos = async (): Promise<Todo[]> => {
   const snapshot = await getDocs(collection(db, TODOS_COLLECTION));
